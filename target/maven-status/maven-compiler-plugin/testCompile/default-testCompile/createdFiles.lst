@@ -1,0 +1,9 @@
+utils\BrowserManager.class
+keys\ENTER.class
+MyStepdefs.class
+pages\AmazonSearchTest.class
+runners\TestRunner.class
+utils\QaProps.class
+utils\TestDataReader.class
+steps\StepDefnitions.class
+steps\Hooks.class
