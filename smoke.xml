@@ -1,0 +1,5 @@
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/SMADASU/IdeaProjects/Cucumber1">
+        <classes/>
+    </test>
+</suite>
