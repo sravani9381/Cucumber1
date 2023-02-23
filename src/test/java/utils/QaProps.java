@@ -1,8 +1,11 @@
+// import utils package
 package utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+
+//import QaProps class
 
 public class QaProps {
     private static Properties properties;

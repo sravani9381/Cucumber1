@@ -1,3 +1,4 @@
+// it imports libraries and setup chromedriver
 package utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -11,9 +12,13 @@ public class BrowserManager {
     public BrowserManager() {
     }
 
+    //getter method
+
     public WebDriver getDriver() {
         return this.driver;
     }
+
+    //setDriver method
 
     public void setDriver() {
         WebDriverManager.chromedriver().setup();

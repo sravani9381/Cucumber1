@@ -1,4 +1,5 @@
 package pages;
+// It imports necessary libraries
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +14,7 @@ import javax.naming.directory.SearchResult;
 import javax.swing.*;
 
 import static org.openqa.selenium.By.*;
+// declare variables
 
 public class AmazonSearchTest {
     WebDriver driver;
@@ -28,17 +30,22 @@ public class AmazonSearchTest {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
     }
+    //web elements for searchbar
     @FindBy(xpath = "//input[@id=\"twotabsearchtextbox\"]")
     private WebElement SearchBar;
     public WebElement getSearchBar() {
         return SearchBar;
     }
+
+    //web elements for search info
     public WebElement getSearchInfo() {
         return SearchInfo;
     }
     @FindBy(xpath = "//span[@class=\"a-color-state a-text-bold\"]")
 
     private WebElement SearchInfo;
+
+    //web elements for search results
 
    public WebElement getSearchResult() {
     return SearchResult;
