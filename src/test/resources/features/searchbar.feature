@@ -5,7 +5,7 @@ Feature: search a product feature
     Then the product results should be displayed
 
 
-  Scenario: Verify that the selected product is displayed on the product detail page with all the relevant information
+  Scenario: Verify that the selected product is displayed on the product detail page
     Then the user is on the Amazon homepage
     And the user has searched for a product
     When the user selects a product from the search results
