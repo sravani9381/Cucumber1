@@ -12,7 +12,9 @@ Feature: search a product feature
     Then the user should see the product detail page
 
  Scenario: verify that user display product
-    Then the user back to Amazon homepage
+
+
+   Then the user back to Amazon homepage
     And the user search a product
     Then the user see particular product detail page
     And the user again back to another url1
