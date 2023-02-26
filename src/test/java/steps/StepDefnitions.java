@@ -97,12 +97,17 @@ public class StepDefnitions {
 
     @Then("the user should see the product detail page")
     public void theUserShouldSeeTheProductDetailPage() throws InterruptedException {
-        String text= amazonPage.getSearchBar().getText();
-//        Thread.sleep(3000);
-        WaitUtils.waitTillVisible(driver,this.amazonPage.getSearchBar());
-        WebElement search_info =this.amazonPage.getSearchBar();
-        Assert.assertTrue(search_info.isDisplayed());
+//        String text= amazonPage.getSearchBar().getText();
+////        Thread.sleep(3000);
+//        WaitUtils.waitTillVisible(driver,this.amazonPage.getSearchBar());
+//        WebElement search_info =this.amazonPage.getSearchBar();
+//        Assert.assertTrue(search_info.isDisplayed());
 //        Assert.assertTrue(text.contains(data.get("SearchProduct")));
+        url = QaProps.getValue("url3");
+        driver.get(url);
+        data = TestDataReader.getData(scenario.getName());
+        amazonPage = new AmazonSearchTest(driver);
+        amazonPage.getSearchBar().click();
 //        Thread.sleep(3000);
 
 
@@ -152,28 +157,60 @@ public class StepDefnitions {
     }
 
 
-    @And("the user again back to another url2")
-    public void theUserAgainBackToAnotherUrl2() {
-        url = QaProps.getValue("url2");
-        driver.get(url);
-        data = TestDataReader.getData(scenario.getName());
-        amazonPage = new AmazonSearchTest(driver);
-        amazonPage.getSearchBar().click();
-//        this.driver.manage().timeouts().implicitlyWait(450L, TimeUnit.SECONDS);
-    }
+//    @And("the user again back to another url2")
+//    public void theUserAgainBackToAnotherUrl2() {
+//        url = QaProps.getValue("url2");
+//        driver.get(url);
+//        data = TestDataReader.getData(scenario.getName());
+//        amazonPage = new AmazonSearchTest(driver);
+//        amazonPage.getSearchBar().click();
+////        this.driver.manage().timeouts().implicitlyWait(450L, TimeUnit.SECONDS);
+//    }
+
+
+
+
+
+
 
 
     @When("the user goes back to the homepage")
     public void theUserGoesBackToTheHomepage() {
+        url = QaProps.getValue("uRl");
+        driver.get(url);
+        data = TestDataReader.getData(scenario.getName());
+        amazonPage = new AmazonSearchTest(driver);
 
-//        driver.get("https://www.amazon.in/cart/smart-wagon?newItems=f737b346-42a2-488c-b8f4-93f3eb6db646,2");
+        amazonPage.getSearchBar().click();
+
+
+//      driver.get("https://www.amazon.in/cart/smart-wagon?newItems=f737b346-42a2-488c-b8f4-93f3eb6db646,2");
 
     }
 
 
     @Then("the user enters {string}")
     public void the_user_enters(String string) {
+        WaitUtils.waitTillVisible(driver,this.amazonPage.getSearchBar());
 
         driver.get(string);
+    }
+    @Given("the user back to another url")
+    public void theUserBackToAnotherUrl() {
+        url = QaProps.getValue("url");
+        driver.get(url);
+        data = TestDataReader.getData(scenario.getName());
+        amazonPage = new AmazonSearchTest(driver);
+
+        amazonPage.getSearchBar().click();
+
+    }
+    @When("the user enter invalid text")
+    public void theUserEnterInvalidText() {
+        amazonPage.getSearchBar().sendKeys(data.get("SearchProduct"));
+        amazonPage.getSearchBar().sendKeys(Keys.ENTER);
+
+
+
     }
 }

@@ -110,5 +110,13 @@ public class MyStepdefs {
     }
 
 
+    @When("the user enter invalid text")
+    public void theUserEnterInvalidText() {
+        
+    }
+
+    @Given("the user back to another url")
+    public void theUserBackToAnotherUrl() {
+    }
 }
 
