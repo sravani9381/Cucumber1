@@ -1,6 +1,7 @@
 package pages;
 // It imports necessary libraries
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,7 +18,7 @@ import static org.openqa.selenium.By.*;
 // declare variables
 
 public class AmazonSearchTest {
-    WebDriver driver;
+     private WebDriver driver;
 
     public AmazonSearchTest(WebDriver driver) {
         this.driver = driver;
@@ -32,34 +33,42 @@ public class AmazonSearchTest {
     }
     //web elements for searchbar
     @FindBy(xpath = "//input[@id=\"twotabsearchtextbox\"]")
-    private WebElement SearchBar;
-    public WebElement getSearchBar() {
-        return SearchBar;
-    }
-
-    //web elements for search info
-    public WebElement getSearchInfo() {
-        return SearchInfo;
-    }
+    @Getter
+    WebElement SearchBar;
     @FindBy(xpath = "//span[@class=\"a-color-state a-text-bold\"]")
 
-    private WebElement SearchInfo;
+    WebElement SearchInfo;
+    @FindBy(xpath = "//span[@class=\"a-size-base-plus a-color-base a-text-normal\"]")
+    WebElement SearchResult;
+    @FindBy(xpath = "//span[@class=\"a-color-state a-text-bold\"]")
+    WebElement SearchInfo1;
+
+//    public AbstractButton getSearchInfo() {
+//       return SearchInfo;
+//    }
+
+
+//   public WebElement getSearchBar() {
+//       return SearchBar;
+//    }
+
+    //web elements for search info
+//    public WebElement getSearchInfo() {
+//        return SearchInfo;
+//    }
 
     //web elements for search results
 
-   public WebElement getSearchResult() {
-    return SearchResult;
-   }
+//   public WebElement getSearchResult() {
+//    return SearchResult;
+//   }
 
-  @FindBy(xpath = "//span[@class=\"a-size-base-plus a-color-base a-text-normal\"]")
-    private WebElement SearchResult;
 
-    public WebElement getSearchInfo1() {
-        return SearchInfo1;
-    }
+//    public WebElement getSearchInfo1() {
+//        return SearchInfo1;
+//    }
 
-    @FindBy(xpath = "//span[@class=\"a-color-state a-text-bold\"]")
-    private WebElement SearchInfo1;
+
 
 //    @FindBy(xpath = "//h1[@ class=\"a-size-base-plus a-text-bold\"]")
 //    private WebElement searchInfo2;
@@ -69,9 +78,9 @@ public class AmazonSearchTest {
 //    }
 
 
-    public WebDriver getDriver() {
-        return driver;
-    }
+//    public WebDriver getDriver() {
+//        return driver;
+//    }
 }
 
 

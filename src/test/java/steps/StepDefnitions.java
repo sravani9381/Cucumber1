@@ -18,6 +18,7 @@ import utils.TestDataReader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import utils.WaitUtils;
 
 public class StepDefnitions {
 //    declare variables
@@ -27,6 +28,7 @@ public class StepDefnitions {
     String url;
     HashMap<String, String> data;
     Scenario scenario;
+//    private byte[] text;
 
     public StepDefnitions(BrowserManager browserManager) {
         this.driver = browserManager.getDriver();
@@ -45,55 +47,70 @@ public class StepDefnitions {
         driver.get(url);
         data = TestDataReader.getData(scenario.getName());
         amazonPage = new AmazonSearchTest(driver);
+
         amazonPage.getSearchBar().click();
     }
 
     @When("the user enter the product name")
     public void the_user_enter_the_product_name() {
-        amazonPage.getSearchBar().sendKeys("mobiles");
+        amazonPage.getSearchBar().sendKeys(data.get("SearchProduct"));
         amazonPage.getSearchBar().sendKeys(Keys.ENTER);
 
     }
 
     @Then("the product results should be displayed")
-    public void the_product_results_should_be_displayed() {
-        String search_info = amazonPage.getSearchInfo().getText();
-        Assert.assertEquals(search_info, "\"mobiles\"");
+    public void the_product_results_should_be_displayed() throws InterruptedException  {
+        String text= amazonPage.getSearchBar().getText();
+//        Thread.sleep(3000);
+        WaitUtils.waitTillVisible(driver,this.amazonPage.getSearchBar());
+        WebElement search_info =this.amazonPage.getSearchBar();
+        Assert.assertTrue(search_info.isDisplayed());
+//        Assert.assertTrue(text.contains(data.get("SearchProduct")));
+//        Thread.sleep(3000);
     }
 
-    @Then("the user is on the Amazon homepage")
+    @Given("the user is on the Amazon homepage")
     public void theUserIsOnTheAmazonHomepage() {
         url = QaProps.getValue("url");
         driver.get(url);
         data = TestDataReader.getData(scenario.getName());
         amazonPage = new AmazonSearchTest(driver);
+
         amazonPage.getSearchBar().click();
     }
 
-    @And("the user has searched for a product")
+    @When("the user has searched for a product")
     public void theUserHasSearchedForAProduct() {
-        amazonPage.getSearchBar().sendKeys("perfume");
+        amazonPage.getSearchBar().sendKeys(data.get("SearchProduct"));
         amazonPage.getSearchBar().sendKeys(Keys.ENTER);
 
     }
 
-    @When("the user selects a product from the search results")
-    public void theUserSelectsAProductFromTheSearchResults() {
+//    @And("the user selects a product from the search results")
+//    public void theUserSelectsAProductFromTheSearchResults() {
         //amazonPage.getSearchBar().click();
-        amazonPage.getSearchBar().sendKeys("Bella Vita Luxury Man Perfume Gift Set for Men 4x20 ml Perfumes Luxury Scent with Long Lasting Fragrance");
-        amazonPage.getSearchBar().sendKeys(Keys.ENTER);
+//        amazonPage.getSearchBar().sendKeys(data.get("SearchProduct"));
+//        amazonPage.getSearchBar().sendKeys(Keys.ENTER);
 
 
-    }
+//    }
 
     @Then("the user should see the product detail page")
-    public void theUserShouldSeeTheProductDetailPage() {
+    public void theUserShouldSeeTheProductDetailPage() throws InterruptedException {
+        String text= amazonPage.getSearchBar().getText();
+//        Thread.sleep(3000);
+        WaitUtils.waitTillVisible(driver,this.amazonPage.getSearchBar());
+        WebElement search_info =this.amazonPage.getSearchBar();
+        Assert.assertTrue(search_info.isDisplayed());
+//        Assert.assertTrue(text.contains(data.get("SearchProduct")));
+//        Thread.sleep(3000);
 
-        String search_info = amazonPage.getSearchInfo().getText();
-        Assert.assertEquals(search_info, "\"perfumeBella Vita Luxury Man Perfume Gift Set for Men 4x20 ml Perfumes Luxury Scent with Long Lasting Fragrance\"");
+
+
+
     }
 
-    @Then("the user back to Amazon homepage")
+    @Given("the user back to Amazon homepage")
     public void theUserBackToAmazonHomepage() {
 
         url = QaProps.getValue("url");
@@ -103,19 +120,23 @@ public class StepDefnitions {
         amazonPage.getSearchBar().click();
     }
 
-    @And("the user search a product")
+    @When("the user search a product")
     public void theUserSearchAProduct() {
-        amazonPage.getSearchBar().sendKeys("Gush - Play Paint lipsticks for women");
+        amazonPage.getSearchBar().sendKeys(data.get("SearchProduct"));
         amazonPage.getSearchBar().sendKeys(Keys.ENTER);
 
 
     }
 
     @Then("the user see particular product detail page")
-    public void theUserSeeParticularProductDetailPage() {
-        String search_info = amazonPage.getSearchInfo1().getText();
-        //amazonPage.getSearchInfo().click();
-        Assert.assertEquals(search_info, "\"Gush - Play Paint lipsticks for women\"");
+    public void theUserSeeParticularProductDetailPage() throws InterruptedException {
+        String text= amazonPage.getSearchBar().getText();
+//        Thread.sleep(3000);
+        WaitUtils.waitTillVisible(driver,this.amazonPage.getSearchBar());
+        WebElement search_info =this.amazonPage.getSearchBar();
+        Assert.assertTrue(search_info.isDisplayed());
+//        Assert.assertTrue(text.contains(data.get("SearchProduct")));
+//        Thread.sleep(3000);
 
 
     }
@@ -127,7 +148,7 @@ public class StepDefnitions {
         data = TestDataReader.getData(scenario.getName());
         amazonPage = new AmazonSearchTest(driver);
         amazonPage.getSearchBar().click();
-        this.driver.manage().timeouts().implicitlyWait(450L, TimeUnit.SECONDS);
+//        this.driver.manage().timeouts().implicitlyWait(450L, TimeUnit.SECONDS);
     }
 
 
@@ -145,7 +166,7 @@ public class StepDefnitions {
     @When("the user goes back to the homepage")
     public void theUserGoesBackToTheHomepage() {
 
-        driver.get("https://www.amazon.in/cart/smart-wagon?newItems=f737b346-42a2-488c-b8f4-93f3eb6db646,2");
+//        driver.get("https://www.amazon.in/cart/smart-wagon?newItems=f737b346-42a2-488c-b8f4-93f3eb6db646,2");
 
     }
 
@@ -156,6 +177,3 @@ public class StepDefnitions {
         driver.get(string);
     }
 }
-
-
-

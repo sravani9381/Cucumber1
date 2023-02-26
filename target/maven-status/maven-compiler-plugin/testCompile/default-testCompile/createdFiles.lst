@@ -1,9 +1,10 @@
 utils\BrowserManager.class
 keys\ENTER.class
 MyStepdefs.class
-pages\AmazonSearchTest.class
 runners\TestRunner.class
-utils\QaProps.class
 utils\TestDataReader.class
 steps\StepDefnitions.class
+utils\WaitUtils.class
+pages\AmazonSearchTest.class
+utils\QaProps.class
 steps\Hooks.class
